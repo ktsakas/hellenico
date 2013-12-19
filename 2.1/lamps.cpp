@@ -31,7 +31,7 @@ bitset<100> press ( int button, bitset<100> lamps, int N ) {
 	int i= (button == 3) ? 1 : 0,
 		leap = (button == 4) ? 3 : 2;
 
-	for ( ; i < N; i+= leap) mask[i]= 1;
+	for ( ; i < N; i+= leap) mask[100-i-1]= 1;
 
 	return lamps^mask;
 }
@@ -66,6 +66,8 @@ int main () {
 	bitset<100> lamps, lampsState;
 	vector<string> lampStates;
 	lamps.set();
+	/*bitset<100> demo = press(4, lamps, 11);
+	cout << demo.to_string().substr(0, 11) << endl;*/
 	// cout << criteriaMatches(lamps, on, off) << endl;
 	// Buttons array has zero for a button pressed an even number of times
 	// and one for buttons that are pressed odd times
@@ -82,8 +84,8 @@ int main () {
 					lampsState= press(c+1, lampsState, N);
 			}
 			
-			// cout << lampsState.to_string().substr(100-N, 100) << endl;
-			string stateStr = lampsState.to_string().substr(100-N, 100);
+			// cout << lampsState.to_string().substr(0, N) << endl;
+			string stateStr = lampsState.to_string().substr(0, N);
 			if ( criteriaMatches(stateStr, on, off) ) 
 				lampStates.push_back( stateStr );
 			// cout << buttons[0] << buttons[1] << buttons[2] << buttons[3] << endl;
@@ -96,7 +98,7 @@ int main () {
 
 	vector<string>::iterator it= lampStates.begin();
 	for ( ; it != lampStates.end(); it++ ) {
-		cout << (*it) << "\n";
+		output << (*it) << "\n";
 	}
 
 	// Wrap things up
