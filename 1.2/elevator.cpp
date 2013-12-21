@@ -1,5 +1,4 @@
 #include <iostream>
-#include <istream>
 #include <cstdlib>
 #include <fstream>
 
@@ -19,7 +18,7 @@ int main()
     int weight[N], e= (N/2 + N%2), lift[e];
     // Read and sort weights
     for ( int i= 0; i < N; i++ ) input >> weight[i];
-    qsort (weight, N, sizeof(int), compare);
+    qsort(weight, N, sizeof(int), compare);
 
     // Go from outermost to innermost weights
     // and add them every two

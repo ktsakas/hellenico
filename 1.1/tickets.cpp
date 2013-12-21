@@ -4,8 +4,8 @@
 using namespace std;
 
 // Get total cost for some students with a certain discount
-int cost ( int TotalStudents, float Discount ) {
-    return int( (TotalStudents*10) * (1-Discount) + 0.5 );
+int cost ( int totalStudents, float discount ) {
+    return int( (totalStudents*10) * (1-discount) + 0.5 );
 }
 
 int main()

@@ -1,5 +1,3 @@
-*
-!.gitignore
-!README
-!*/
-!*.cpp
+*.exe
+*.in
+*.out

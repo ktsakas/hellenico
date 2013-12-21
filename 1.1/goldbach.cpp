@@ -27,7 +27,7 @@ int main() {
 	// Save to file the fist two integers,
 	// that add up to N
 	for ( int i= 2; i < N; i++ ) {
-		if ( isPrime(i) && isPrime(N-i) ) {
+		if ( isPrime(i) and isPrime(N-i) ) {
 			output << i << " " << N-i << "\n";
 			break;
 		}

@@ -1,6 +1,6 @@
 #include <iostream>
 #include <fstream>
-#include<time.h>
+#include <time.h>
 
 using namespace std;
 
@@ -12,44 +12,40 @@ int main()
     // Initialize variables and read data into them
     int N;
     input >> N;
-    double speed[N], time[N];
+    double speed[N], time[N], totalTime= 0;
     for ( int c= 0; input >> speed[c] >> time[c]; c++ );
 
-    double totalTime= 0;
+    int i, c;
     for ( int t= 0; t < N; t++ ) {
         // Find the time when the next download will end
-        int i= 0;
         double nextDown= 0;
-        do {
-            if ( ( time[i] != 0 && time[i] < nextDown ) ||
+        for ( i= 0; i < N; i++ ) {
+            if ( ( time[i] != 0 and time[i] < nextDown ) or
                  ( nextDown == 0 ) ) {
                 nextDown= time[i];
             }
-            i++;
-        } while ( i < N );
+        }
 
         // Add the time of that download to the total time
         totalTime += nextDown;
 
         // Remove the time that passed from each download
-        for ( int t= 0; t < N; t++ ) {
-            if ( time[t] != 0 ) time[t] -= nextDown;
+        for ( i= 0; i < N; i++ ) {
+            if ( time[i] != 0 ) time[i] -= nextDown;
         }
 
         // Find the extra bandwith available
         double extraBand= 0;
-        for ( int x= 0; x < N; x++ ) {
-            if ( time[x] == 0 && speed[x] != 0 ) {
-                extraBand += speed[x];
-                speed[x]= 0;
+        for ( int i= 0; i < N; i++ ) {
+            if ( time[i] == 0 && speed[i] != 0 ) {
+                extraBand += speed[i];
+                speed[i]= 0;
             }
         }
 
         // Find a download to distribute the extra bandwith
-        int c= 0;
-        while ( c < N-1 ) {
+        for ( c= 0; c < N-1; c++ ) {
             if ( time[c] != 0 ) break;
-            c++;
         }
 
         // Calculate the download's new speed and time
